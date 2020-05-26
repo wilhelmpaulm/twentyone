@@ -1,3 +1,3 @@
-import { TwentyOne } from './TwentyOne.js';
+import { TwentyOne } from "./TwentyOne.js";
 
-customElements.define('twenty-one', TwentyOne);
+customElements.define("twenty-one", TwentyOne);

@@ -1,5 +1,6 @@
-import { LitElement, html, css } from 'lit-element';
-import { openWcLogo } from './open-wc-logo.js';
+import { LitElement, css, html } from "lit-element";
+
+import { openWcLogo } from "./templates/open-wc-logo.js";
 
 export class TwentyOne extends LitElement {
   static get properties() {
@@ -28,20 +29,6 @@ export class TwentyOne extends LitElement {
         flex-grow: 1;
       }
 
-      .logo > svg {
-        margin-top: 36px;
-        animation: app-logo-spin infinite 20s linear;
-      }
-
-      @keyframes app-logo-spin {
-        from {
-          transform: rotate(0deg);
-        }
-        to {
-          transform: rotate(360deg);
-        }
-      }
-
       .app-footer {
         font-size: calc(12px + 0.5vmin);
         align-items: center;
@@ -57,28 +44,8 @@ export class TwentyOne extends LitElement {
     return html`
       <main>
         <div class="logo">${openWcLogo}</div>
-        <h1>My app</h1>
-
-        <p>Edit <code>src/TwentyOne.js</code> and save to reload.</p>
-        <a
-          class="app-link"
-          href="https://open-wc.org/developing/#code-examples"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Code examples
-        </a>
+        <h1>TwentyOne</h1>
       </main>
-
-      <p class="app-footer">
-        🚽 Made with love by
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://github.com/open-wc"
-          >open-wc</a
-        >.
-      </p>
     `;
   }
 }

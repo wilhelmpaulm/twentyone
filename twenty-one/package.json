@@ -16,7 +16,9 @@
   "author": "twenty-one",
   "license": "MIT",
   "dependencies": {
+    "dotenv": "^8.2.0",
+    "lit-element": "^2.0.1",
     "lit-html": "^1.0.0",
-    "lit-element": "^2.0.1"
+    "localforage": "^1.7.3"
   }
 }
