@@ -1,6 +1,6 @@
 import { LitElement, css, html } from "lit-element";
 
-import { openWcLogo } from "./templates/open-wc-logo.js";
+import { openWcLogo } from "./templates/logo.js";
 
 export class TwentyOne extends LitElement {
   static get properties() {
@@ -13,7 +13,6 @@ export class TwentyOne extends LitElement {
   static get styles() {
     return css`
       :host {
-        min-height: 100vh;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -24,28 +23,14 @@ export class TwentyOne extends LitElement {
         margin: 0 auto;
         text-align: center;
       }
-
-      main {
-        flex-grow: 1;
-      }
-
-      .app-footer {
-        font-size: calc(12px + 0.5vmin);
-        align-items: center;
-      }
-
-      .app-footer a {
-        margin-left: 5px;
-      }
     `;
   }
 
   render() {
     return html`
-      <main>
+      <div>
         <div class="logo">${openWcLogo}</div>
-        <h1>TwentyOne</h1>
-      </main>
+      </div>
     `;
   }
 }
