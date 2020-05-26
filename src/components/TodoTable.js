@@ -1,13 +1,15 @@
 import { LitElement, html } from "lit-element";
 
+import localDb from "./../local-db";
+
 const todoItemFactory = (todo, onClick) => {
   const { id, priority, title } = todo;
   return html`
     <link rel="stylesheet" href="./../../css/vendor/bootstrap.min.css" />
     <tr>
-      <th scope="col">${priority}</th>
-      <th scope="col">${title}</th>
-      <th scope="col" width="1">
+      <td scope="col">${priority}</td>
+      <td scope="col">${title}</td>
+      <td scope="col" width="1">
         <button
           id="onClick"
           @click=${onClick}
@@ -17,49 +19,57 @@ const todoItemFactory = (todo, onClick) => {
         >
           x
         </button>
-      </th>
+      </td>
     </tr>
   `;
 };
 
 export class TodoTable extends LitElement {
+  constructor() {
+    super();
+    this.todos = [];
+  }
+
   static get properties() {
     return {
       todos: { type: Array },
     };
   }
 
-  constructor() {
-    super();
-    this.todos = [];
-  }
-
-  addTodo() {
+  async addTodo() {
     const priorityElem = this.shadowRoot.getElementById("todoPriority");
     const titleElem = this.shadowRoot.getElementById("todoTitle");
     this.todos = [
       ...this.todos,
       { id: Date.now(), priority: priorityElem.value, title: titleElem.value },
     ];
+    await localDb.setItem("todos", this.todos);
 
     priorityElem.selectedIndex = 0;
     titleElem.value = "";
 
     console.log("add new todo item");
     console.log(this.todos);
+    console.log(await localDb.getItem("todos"));
   }
 
-  removeTodo(event) {
+  async removeTodo(event) {
     this.todos = this.todos.filter(
       (todo) => todo.id != event.target.getAttribute("data-id")
     );
 
+    await localDb.setItem("todos", this.todos);
+
     console.log("removed new todo item");
-    console.log(event.target.getAttribute("data-id"));
-    console.log(this.todos);
+    console.log(await localDb.getItem("todos"));
+  }
+
+  async firstUpdated(changedProperties) {
+    this.todos = (await localDb.getItem("todos")) || [];
   }
 
   render() {
+    console.log("render triggered");
     return html`
       <link rel="stylesheet" href="./../../css/vendor/bootstrap.min.css" />
       <table class="table table-hover">

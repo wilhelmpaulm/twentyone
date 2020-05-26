@@ -1,6 +1,6 @@
 import { LitElement, css, html } from "lit-element";
 
-import { openWcLogo } from "./templates/logo.js";
+import { logo } from "./templates/logo.js";
 
 export class TwentyOne extends LitElement {
   static get properties() {
@@ -29,7 +29,7 @@ export class TwentyOne extends LitElement {
   render() {
     return html`
       <div>
-        <div class="logo">${openWcLogo}</div>
+        <div class="logo">${logo}</div>
       </div>
     `;
   }

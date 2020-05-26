@@ -1,6 +1,6 @@
 import { html } from "lit-html";
 
-export const openWcLogo = html`
+export const logo = html`
   <svg
     version="1.0"
     xmlns="http://www.w3.org/2000/svg"
